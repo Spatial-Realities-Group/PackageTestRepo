@@ -1,0 +1,9 @@
+/PackageTesting/Library
+/PackageTesting/Logs
+/PackageTesting/Temp
+/PackageTesting/UserSettings
+*.sln
+*.csproj
+.DS_Store
+PackageTesting/.idea/.idea.PackageTesting/.idea
+PackageTesting/obj
