@@ -1,0 +1,10 @@
+{
+  "name": "com.spatial-realities.test",
+  "displayName": "Testering",
+  "version": "0.1.0",
+  "description": "Test package",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@Spatial-Realities-Group" },
+  "dependencies": {
+  }
+}
