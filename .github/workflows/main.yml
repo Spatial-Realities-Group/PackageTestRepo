@@ -19,6 +19,6 @@ jobs:
         registry-url: 'https://npm.pkg.github.com'
         scope: '@octocat' # Defaults to the user or organization that owns the workflow file
     - run: npm publish
-      working-directory: PackageTesting/Packages/@com.spatial-realities.test
+      working-directory: PackageTesting/Packages/com.spatial-realities.test
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
