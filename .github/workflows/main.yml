@@ -4,7 +4,7 @@ on:
     types: [created]
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu_x64_cmd
     steps:
     - uses: actions/checkout@v2
     # Setup .npmrc file to publish to GitHub Packages
