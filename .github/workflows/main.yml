@@ -6,7 +6,7 @@ on:
         description: 'Test Upload'
 jobs:
   build:
-    runs-on: ubuntu_x64_cmd
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     # Setup .npmrc file to publish to GitHub Packages
