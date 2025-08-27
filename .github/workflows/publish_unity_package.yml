@@ -1,0 +1,31 @@
+name: Upload Unity Package
+on:
+  workflow_call:
+    inputs:
+      working_directory:
+        type: string
+        required: true
+        description: 'A relative path that starts from the repo root to the folder containing the packages package.json file'
+      organization:
+        type: string
+        required: false
+        description: 'Change this if the organization or user that the package is published against is different'
+        default: '@octocat' # Defaults to the user or organization that owns the workflow file
+jobs:
+  npm_registery_upload:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+    - uses: actions/checkout@v2
+    # Setup .npmrc file to publish to GitHub Packages
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        registry-url: 'https://npm.pkg.github.com'
+        scope: ${{ inputs.working_directory }}
+    - run: npm publish
+      working-directory: ${{ inputs.working_directory }}
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
