@@ -2,8 +2,10 @@ name: Publish Unity Package
 on:
   workflow_dispatch:
     inputs:
-      tags:
-        description: 'Test Upload'
+      working_directory:
+        type: string
+        required: true
+        description: 'A relative path that starts from the repo root to the folder containing the packages package.json file'
 jobs:
   call_publish_unity_package:
     uses: ./.github/workflows/publish_unity_package.yml
