@@ -1,0 +1,9 @@
+name: Publish Unity Package
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: 'Test Upload'
+jobs:
+  call_publish_unity_package:
+    uses: ./.github/workflows/publish_unity_package.yml
