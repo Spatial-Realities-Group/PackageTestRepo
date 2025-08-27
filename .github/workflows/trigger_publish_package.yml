@@ -9,3 +9,5 @@ on:
 jobs:
   call_publish_unity_package:
     uses: ./.github/workflows/publish_unity_package.yml
+    with:
+      working_directory: ${{ inputs.working_directory }}
