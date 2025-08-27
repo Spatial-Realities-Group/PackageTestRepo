@@ -6,6 +6,7 @@ on:
         type: string
         required: true
         description: 'A relative path that starts from the repo root to the folder containing the packages package.json file'
+        default: 'PackageTesting/Packages/com.spatial-realities.test'
       organization:
         type: string
         required: false
@@ -27,6 +28,6 @@ jobs:
         # registry-url: 'https://npm.pkg.github.com'
         # scope: ${{ inputs.working_directory }}
     # - run: npm publish
-      working-directory: ${{ inputs.working_directory }}
+      # working-directory: ${{ inputs.working_directory }}
       env:
         NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
