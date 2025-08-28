@@ -22,7 +22,7 @@ jobs:
     - name: Checkout Project
       uses: actions/checkout@v2
     - name: Get Version
-      run: python .github/workflows/getUnityPackageVersion.py "${{ github.workspace }}/${{ inputs.working_directory }}/package.json"
+      run: python .github/workflows/getUnityPackageVersion.py "${{ github.workspace }}/${{ inputs.working_directory }}/package.json" "GITHUB_ENV"
     - name: Print Version
       run: echo "${{ env.PACKAGE_VERSION }}"
     # Setup .npmrc file to publish to GitHub Packages
