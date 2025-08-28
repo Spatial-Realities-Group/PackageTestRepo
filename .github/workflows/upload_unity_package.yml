@@ -20,6 +20,7 @@ jobs:
       packages: write
     steps:
     - uses: actions/checkout@v2
+    - run: python -V
     - run: version_num=$(python .github/workflows/getUnityPackageVersion.py "${{ inputs.working_directory }}")
     - run: echo "${{ inputs.working_directory }}"
     # Setup .npmrc file to publish to GitHub Packages
