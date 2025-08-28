@@ -12,7 +12,7 @@ def setPackageVersion(pathToJsonFile: str, version: str) -> None:
     except Exception as e:
         print(f"Unable to set Unity project version to: {version}. Reason: {e}")
 
-def getPackageJsonStr(pathToJsonFile: str) -> str:
+def getPackageJsonStr(pathToJsonFile: str) -> dict:
     try:
         jsonFile = open(pathToJsonFile, 'r')
         packageJson = json.loads(jsonFile.read())
