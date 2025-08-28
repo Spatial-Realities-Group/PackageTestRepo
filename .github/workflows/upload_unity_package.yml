@@ -19,8 +19,9 @@ jobs:
       contents: read
       packages: write
     steps:
+    - uses: actions/checkout@v2
+    - run: version_num=$(python ./getUnityPackageVersion.py "${{ inputs.working_directory }}")
     - run: echo "${{ inputs.working_directory }}"
-    # - uses: actions/checkout@v2
     # Setup .npmrc file to publish to GitHub Packages
     # - uses: actions/setup-node@v1
       # with:
