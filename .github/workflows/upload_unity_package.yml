@@ -19,10 +19,12 @@ jobs:
       contents: read
       packages: write
     steps:
-    - uses: actions/checkout@v2
-    - run: python -V
-    - run: version_num=$(python .github/workflows/getUnityPackageVersion.py "${{ inputs.working_directory }}")
-    - run: echo "${{ inputs.working_directory }}"
+    - name: Checkout Project
+      uses: actions/checkout@v2
+    - name: Get Version
+      run: version_num=$(python .github/workflows/getUnityPackageVersion.py "${{ inputs.working_directory }}")
+    - name: Print Version
+      run: echo "${{ inputs.working_directory }}"
     # Setup .npmrc file to publish to GitHub Packages
     # - uses: actions/setup-node@v1
       # with:
