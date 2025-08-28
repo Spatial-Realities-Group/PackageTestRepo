@@ -1,4 +1,5 @@
 import argparse
+import os.path
 from unityVersionHelpers import getPackageVersionStr
 
 def main():
@@ -8,7 +9,12 @@ def main():
 
     # Parse arguments
     args = parser.parse_args()
-    return getPackageVersionStr(args.path_to_package)
+
+    if not os.path.isfile(args.path_to_package):
+        raise Exception(f"Path to package.json not valid: {args.path_to_package}")
+
+    version = getPackageVersionStr(args.path_to_package)
+    return version
 
 if __name__ == "__main__":
     main()
