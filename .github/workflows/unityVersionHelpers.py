@@ -2,7 +2,7 @@ import json
     
 def setPackageVersion(pathToJsonFile: str, version: str) -> None:
     try:
-        packageJson = getPackageJsonStr(pathToJsonFile)
+        packageJson = getPackageInfo(pathToJsonFile)
         packageJson["version"] = version
         
         jsonFile = open(pathToJsonFile, 'w')
@@ -12,7 +12,7 @@ def setPackageVersion(pathToJsonFile: str, version: str) -> None:
     except Exception as e:
         print(f"Unable to set Unity project version to: {version}. Reason: {e}")
 
-def getPackageJsonStr(pathToJsonFile: str) -> dict:
+def getPackageInfo(pathToJsonFile: str) -> dict:
     try:
         jsonFile = open(pathToJsonFile, 'r')
         packageJson = json.loads(jsonFile.read())
@@ -23,7 +23,8 @@ def getPackageJsonStr(pathToJsonFile: str) -> dict:
         return ""
 
 def getPackageVersionStr(pathToJsonFile: str) -> str:
-    return getPackageJsonStr(pathToJsonFile)['version']
+    packageJson = getPackageInfo(pathToJsonFile)
+    return packageJson["version"]
 
 def getPackageVersion(pathToJsonFile: str) -> list[int, int, int]:
     versionStr = getPackageVersionStr(pathToJsonFile)
@@ -50,4 +51,4 @@ def semanticVerStrToArray(versionStr: str) -> list[int, int, int]:
 
 def semanticVerArrayToStr(version: list[int, int, int]) -> str:
     if validateSemanticVersion(version):
-        return f'{version[0]}.{version[1]}.{version[2]}'
+        return f"{version[0]}.{version[1]}.{version[2]}"
