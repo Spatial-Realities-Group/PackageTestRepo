@@ -16,7 +16,7 @@ def main():
         raise Exception(f"Path to package.json not valid: {args.path_to_package}")
 
     version = getPackageVersionStr(args.path_to_package)
-    envFilePath = os.getenv(parser.env_vars)
+    envFilePath = os.getenv(args.env_vars)
     with open(envFilePath, 'a') as envFile:
         envFile.write(f"PACKAGE_VERSION={version}")
 
