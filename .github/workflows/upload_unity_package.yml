@@ -24,7 +24,7 @@ jobs:
     - name: Get Version
       run: version_num=$(python .github/workflows/getUnityPackageVersion.py "${{ github.workspace }}/${{ inputs.working_directory }}/package.json")
     - name: Print Version
-      run: echo "${{ inputs.working_directory }}"
+      run: echo "${{ version_num }}"
     # Setup .npmrc file to publish to GitHub Packages
     # - uses: actions/setup-node@v1
       # with:
