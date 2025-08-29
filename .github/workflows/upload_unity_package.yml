@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Get Version
       run: |
-        echo "PACKAGE_PATH=${{ github.workspace }}/${{ PACKAGE_ROOT_PATH }}/package.json" >> $GITHUB_ENV
+        echo "PACKAGE_PATH=${{ github.workspace }}/${{ env.PACKAGE_ROOT_PATH }}/package.json" >> $GITHUB_ENV
         python .github/workflows/getUnityPackageVersion.py "${{ env.PACKAGE_PATH }}" "GITHUB_ENV"
     - name: Print Version
       run: echo "${{ env.PACKAGE_VERSION }}"
