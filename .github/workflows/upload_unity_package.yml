@@ -13,13 +13,13 @@ jobs:
     - name: Create Abs Package Path
       run : echo "PACKAGE_PATH=${{ github.workspace }}/${{ vars.PACKAGE_ROOT_PATH }}/package.json" >> $GITHUB_ENV
     - name: Get Version (PackageJson)
-      if: ${{ inputs.version_source }} == 'PackageJson'
+      if: ${{ inputs.version_source == 'PackageJson' }}
       run: python .github/workflows/getUnityPackageVersion.py "${{ env.PACKAGE_PATH }}" "GITHUB_ENV"
     - name: Get Version (GitTag)
-      if: ${{ inputs.version_source }} == 'GitTag'
+      if: ${{ inputs.version_source == 'GitTag' }}
       run: echo "PACKAGE_VERSION=1.0.9" >> $GITHUB_ENV
     - name: Get Version (Manual)
-      if: ${{ inputs.version_source }} == 'Manual'
+      if: ${{ inputs.version_source  == 'Manual' }}
       run: echo "PACKAGE_VERSION=1.11.0" >> $GITHUB_ENV
     - name: Print Version
       run: echo "${{ env.PACKAGE_VERSION }}"
