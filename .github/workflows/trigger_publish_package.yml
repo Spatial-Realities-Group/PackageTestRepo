@@ -2,15 +2,14 @@ name: Publish Unity Package
 on:
   workflow_dispatch:
     inputs:
-      working_directory:
-        type: string
+      version_source:
+        description: 'Which source will be used to determine this packages version'
+        type: choice
         required: true
-        description: 'A relative path that starts from the repo root to the folder containing the packages package.json file'
-      organization:
-        type: string
-        required: false
-        description: 'Change this if the organization or user that the package is published against is different'
-        default: '@octocat' # Defaults to the user or organization that owns the workflow file
+        default: "PackageJson"
+        options:
+          - PackageJson
+          - GitTag
 jobs:
   call_publish_unity_package:
     uses: ./.github/workflows/upload_unity_package.yml
