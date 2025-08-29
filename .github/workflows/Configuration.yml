@@ -1,0 +1,7 @@
+name: Configuration
+on:
+  workflow_call:
+    outputs:
+      packageJsonFilePath:
+        description: "The File path to the package.json file for the Unity package"
+        value: "PackageTesting/Packages/com.spatial-realities.test"
