@@ -10,6 +10,12 @@ on:
         options:
           - PackageJson
           - GitTag
+          - Manual
+      manual_version:
+        description: 'must be filled in if using manual version entry'
+        type: string
+        required: false
+        default: ""
 jobs:
   call_publish_unity_package:
     uses: ./.github/workflows/upload_unity_package.yml
