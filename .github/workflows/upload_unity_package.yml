@@ -10,10 +10,10 @@ jobs:
     steps:
     - name: Checkout Project
       uses: actions/checkout@v2
+    - name: Create Abs Path
+      run : echo "PACKAGE_PATH=${{ github.workspace }}/${{ vars.PACKAGE_ROOT_PATH }}/package.json" >> $GITHUB_ENV
     - name: Get Version
-      run: |
-        echo "PACKAGE_PATH=${{ github.workspace }}/${{ vars.PACKAGE_ROOT_PATH }}/package.json" >> $GITHUB_ENV
-        python .github/workflows/getUnityPackageVersion.py "${{ env.PACKAGE_PATH }}" "GITHUB_ENV"
+      run: python .github/workflows/getUnityPackageVersion.py "${{ env.PACKAGE_PATH }}" "GITHUB_ENV"
     - name: Print Version
       run: echo "${{ env.PACKAGE_VERSION }}"
     # Setup .npmrc file to publish to GitHub Packages
