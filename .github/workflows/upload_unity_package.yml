@@ -1,17 +1,6 @@
 name: Upload Unity Package
 on:
   workflow_call:
-    inputs:
-      working_directory:
-        type: string
-        required: true
-        description: 'A relative path that starts from the repo root to the folder containing the packages package.json file'
-        default: 'PackageTesting/Packages/com.spatial-realities.test'
-      organization:
-        type: string
-        required: false
-        description: 'Change this if the organization or user that the package is published against is different'
-        default: '@octocat' # Defaults to the user or organization that owns the workflow file
 jobs:
   npm_registery_upload:
     runs-on: ubuntu-latest
@@ -23,7 +12,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Get Version
       run: |
-        echo "PACKAGE_PATH=${{ github.workspace }}/${{ inputs.working_directory }}/package.json" >> $GITHUB_ENV
+        echo "PACKAGE_PATH=${{ github.workspace }}/${{ PACKAGE_ROOT_PATH }}/package.json" >> $GITHUB_ENV
         python .github/workflows/getUnityPackageVersion.py "${{ env.PACKAGE_PATH }}" "GITHUB_ENV"
     - name: Print Version
       run: echo "${{ env.PACKAGE_VERSION }}"
@@ -32,7 +21,7 @@ jobs:
       # with:
         # node-version: '12.x'
         # registry-url: 'https://npm.pkg.github.com'
-        # scope: ${{ inputs.working_directory }}
+        # scope: '@octocat' # Defaults to the user or organization that owns the workflow file
     # - run: npm publish
       # working-directory: ${{ inputs.working_directory }}
       env:
