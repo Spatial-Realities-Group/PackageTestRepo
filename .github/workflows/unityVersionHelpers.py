@@ -6,7 +6,7 @@ def setPackageVersion(pathToJsonFile: str, version: str) -> None:
         packageJson["version"] = version
         
         jsonFile = open(pathToJsonFile, 'w')
-        json.dump(packageJson, jsonFile)
+        json.dump(packageJson, jsonFile, indent=4)
         jsonFile.close()
         return packageJson
     except Exception as e:
